@@ -29,8 +29,38 @@ class CardController extends Controller
     public function generate()
     {
         //Generate a new card object for the user
+        $classes = ['Mago', 'Guerreiro', 'Ogro', 'Cavalheiro'];
+        $armasMago = ['Cetro', 'Cajado'];
+        $armasGuerreiro = ['Espada', 'Espada e Escudo', 'Maça', 'Machado'];
+        $armasOgro = ['Tacape', 'Maça', 'Machado pesado', 'Espada pesada'];
+        $armasCavalheiro = ['Lança', 'Espada', 'Espada e escudo', 'Machado leve', 'Adaga'];
+
+        $classe = $classes[rand(0,count($classes))];
+        $arma = '';
+        
+        switch ($classe){
+            case 'Mago':
+                $arma = $armasMago[rand(0,count($armasMago)-1)];
+                break;
+            case 'Guerreiro':
+                $arma = $armasGuerreiro[rand(0,count($armasGuerreiro)-1)];
+                break;
+            case 'Ogro':
+                $arma = $armasOgro[rand(0,count($armasOgro)-1)];
+                break;
+            case 'Cavalheiro':
+                $arma = $armasCavalheiro[rand(0,count($armasCavalheiro)-1)];
+                break;
+        }
+
         return [
-            'generated' => rand(1, 10)
+            'classe'=>$classe,
+            'arma'=>$arma,
+            'hp'=>rand(1,500),
+            'mana'=>rand(1,500),
+            'stamina'=>rand(1,500),
+            'forca'=>rand(1,500),
+            'qi'=>rand(1,200)
         ];
     }
 

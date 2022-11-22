@@ -54,7 +54,7 @@ class UserController extends Controller
 
         if ($user) {
             http_response_code(200);
-            return $user;
+            return ["success" => "succesfully logged in", "id"=>$user->id];
         } else {
             http_response_code(400);
             return ["error" => "Email or Password wrong"];
